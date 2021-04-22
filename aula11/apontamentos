@@ -1,0 +1,31 @@
+SYSTEM V IPC
+
+int msgctl (int msgid, int cmd, struct msgid_ds *buf);
+int cmd-> ex: IPC_RMID
+msgid-> valor do msgget
+
+----------------------------------------------------------------------------------------------
+int msgsnd(int msgid, void *msgp, size_t msgsz, int msgflg); -> message send
+
+int msgid -> identificador interno (valor que vem do msgget)
+void *msgp -> ponteiro para mensagem, incluido cabeçalho
+size_t msgsz -> tamanho da mensagem que queremos enviar sem cabeçalho
+
+
+struct msgbuf {
+	long mtype; //Obrigatório
+	char mtext[1]; //Tamanho e estrutura variável
+};
+
+---------------------------------------------------------------------------------------------
+ssize_t msgrcv(int msgid, void *msgp, size_t msgsz, long msgtyp, int msgflg);
+
+int msgid -> identificador interno (valor que vem do msgget)
+void *msgp -> ponteiro para mensagem, incluido cabeçalho
+size_t msgsz -> tamanho da mensagem que queremos enviar sem cabeçalho
+long msgtyp -> 0= recebe 1ª mensagem (funciona como um FIFO); 0> recebe a 1ª mensagem com mtype=msgtyp (vários FIFOS); <0 recebe a 1ª mensagem com mtype mais baixo e mtype menor ou igual que o valor absoluto de mtyp (FIFO com prioridades)
+
+Cada mensagem é recebida por um e um só receiver
+
+Quando uma fila está vazia e um processo faça receive este bloqueia.
+Nota: IPC_RMID remover a mensagem da fila.

@@ -1,0 +1,6 @@
+Aula 05
+
+int main (int argc, char, *argv[])
+argc- número de argumentos
+*argv[]- array de argumentos
+quando temos um apontador, ele vai apontar para um endereço que é um inteiro

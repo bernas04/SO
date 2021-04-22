@@ -1,0 +1,3 @@
+numer_1 =int(input("Número 1 ")
+numer_2 =int(input("Número 2 ")
+print=numer_1+numer_2

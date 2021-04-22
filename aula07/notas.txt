@@ -1,0 +1,4 @@
+BINÁRIOS
+Para guardar as palavras num ficheiro binário, estas vão ser codificados em binário. Não é necessário nenhum separador porque cada inteiro ocupa sempre 4 bytes
+
+Ficheiros de texto guardam o código ASCII

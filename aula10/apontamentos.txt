@@ -1,0 +1,40 @@
+Todas as threads partilham o mesmo espaço de endereçamento
+Comunicação entre threads através de variáveis globais (são acedidas por todas as threads)
+
+
+Segmento de memória partilhada, usado por os processos em execução. Nos processos temos um ponteiro para a zona de memória partilhada.
+O segmento de memória partilhada existe até que um processo o elimine diretamente
+
+
+
+System U IPC
+--> Arrays de semáforos (essenciais para sincronização)
+--> Segmentos de memória partilhada(essencial para comunicação)
+
+--> Filas de mensagens (Conseguimos fazer tanto a sincronização como a comunicação)
+
+Função int shmget(key_t key, size_t size, int shmflg);
+	|
+	|
+	|
+	V
+identificador interno shm (-1 se erro)
+	
+key -> identificador externo shdmem
+size -> tamanho em bytes do tamanho da memória partilhada que queremos;
+shmflag -> permissões rwx|rwx|rwx && IPC_CREATE (criar um novo segmento de memória partilhada) && IPC_EXCL (garante criação, se já estiver criada retorna -1)
+
+Função int shmctl(int shmid, int cmd, struct shmid_ds *buf);
+
+shmid -> valor de retorno do shmget
+cmd -> comanddo ex: IPC_RMID
+buf -> depende de cmd
+
+Função void *shmat(int shmid, const void *shmaddr, int shmflg);
+		
+shmid -> retorno do shmget
+*shmaddr -> pedido para endereço de mapeamento
+shmflg -> flags
+
+Função int shmdt (void *shmaddr) 😀️ 
+

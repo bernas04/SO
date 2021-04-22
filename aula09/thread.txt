@@ -1,0 +1,7 @@
+int pthread_create(PTHREAD_T *ID, pthread_attr *attr, VOID*(*START-ROUTINE)(VOID*), void *arg)
+RECEBER A THREAD ID, definir os atributos da thread, PONTEIRO PARA FUNÇÃO QUE TEM ARGUMENTO VOID* E ERETORNA VOID *, definir o argumento de start-routine operando o thread é iniciada
+
+int pthread_join(pthread_t thread, void **retval)
+	thread ID a esperar, recolher o valor de retorno da thread do tipo void*
+	
+A região partilhada vai ser a variável "value" e vai causar problemas, pois estão a manipular esta variável varios processos

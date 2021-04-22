@@ -1,0 +1,8 @@
+x1=int(input("Introduza um valor: "))
+x2=int(input("Introduza outro valor: "))
+if x1>x2:
+    max=x1
+else: 
+    max=x2
+print("Máximo= " ,max)
+    
